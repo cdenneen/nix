@@ -1,5 +1,5 @@
 {
-  pkgs,
+  isWSL,
   lib,
   ...
 }: {
