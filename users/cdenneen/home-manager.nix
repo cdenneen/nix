@@ -235,10 +235,7 @@ in {
     '';
   };
 
-  programs.alacritty = import ./programs/alacritty.nix {
-    inherit inputs;
-    pkgs = pkgs;
-  };
+  lib.mkIf !isWSL programs.alacritty = import ./programs/alacritty.nix { pkgs = pkgs; };
   # programs.alacritty = {
   #   enable = !isWSL;
   #
