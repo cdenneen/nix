@@ -235,9 +235,12 @@ in {
     '';
   };
 
-  programs.alacritty = lib.mkIf (!isWSL) {
-    import ./programs/alacritty.nix { inherit pkgs; };
-  };
+  imports = [
+    ./programs/alacritty.nix
+  ]
+  # programs.alacritty = lib.mkIf (!isWSL) {
+  #   import ./programs/alacritty.nix { inherit pkgs; };
+  # };
   # programs.alacritty = {
   #   enable = !isWSL;
   #
