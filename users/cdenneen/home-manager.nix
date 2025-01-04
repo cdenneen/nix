@@ -237,6 +237,7 @@ in {
 
   imports = [
     ./programs/alacritty.nix
+    ./programs/kitty.nix
   ]
   # programs.alacritty = lib.mkIf (!isWSL) {
   #   import ./programs/alacritty.nix { inherit pkgs; };
@@ -258,10 +259,10 @@ in {
   #   };
   # };
 
-  programs.kitty = {
-    enable = !isWSL;
-    extraConfig = builtins.readFile ./kitty;
-  };
+  # programs.kitty = {
+  #   enable = !isWSL;
+  #   extraConfig = builtins.readFile ./kitty;
+  # };
 
   programs.i3status = {
     enable = isLinux && !isWSL;
