@@ -236,7 +236,7 @@ in {
   };
 
   programs.alacritty = import ./programs/alacritty.nix {
-    inherit isWSL;
+    inherit inputs meta;
     pkgs = pkgs;
   };
   # programs.alacritty = {
