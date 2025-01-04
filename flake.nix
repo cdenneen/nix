@@ -1,5 +1,5 @@
 {
-  description: 'Chris Denneen system config';
+  description = 'Chris Denneen system config';
 
   inputs = {
     # Pin our primary nixpkgs repository. This is the main nixpkgs repository
