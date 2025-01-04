@@ -119,6 +119,10 @@ in {
   # Programs
   #---------------------------------------------------------------------
 
+  programs.fzf = import ./programs/fzf.nix {
+    inherit isDarwin isLinux;
+    pkgs = pkgs;
+  };
   programs.gpg.enable = true;
 
   programs.eza = {
@@ -231,22 +235,26 @@ in {
     '';
   };
 
-  programs.alacritty = {
-    enable = !isWSL;
-
-    settings = {
-      env.TERM = "xterm-256color";
-
-      key_bindings = [
-        { key = "K"; mods = "Command"; chars = "ClearHistory"; }
-        { key = "V"; mods = "Command"; action = "Paste"; }
-        { key = "C"; mods = "Command"; action = "Copy"; }
-        { key = "Key0"; mods = "Command"; action = "ResetFontSize"; }
-        { key = "Equals"; mods = "Command"; action = "IncreaseFontSize"; }
-        { key = "Subtract"; mods = "Command"; action = "DecreaseFontSize"; }
-      ];
-    };
+  programs.alacritty = import ./programs/alacritty.nix {
+    inherit isWSL;
+    pkgs = pkgs;
   };
+  # programs.alacritty = {
+  #   enable = !isWSL;
+  #
+  #   settings = {
+  #     env.TERM = "xterm-256color";
+  #
+  #     key_bindings = [
+  #       { key = "K"; mods = "Command"; chars = "ClearHistory"; }
+  #       { key = "V"; mods = "Command"; action = "Paste"; }
+  #       { key = "C"; mods = "Command"; action = "Copy"; }
+  #       { key = "Key0"; mods = "Command"; action = "ResetFontSize"; }
+  #       { key = "Equals"; mods = "Command"; action = "IncreaseFontSize"; }
+  #       { key = "Subtract"; mods = "Command"; action = "DecreaseFontSize"; }
+  #     ];
+  #   };
+  # };
 
   programs.kitty = {
     enable = !isWSL;
