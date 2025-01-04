@@ -2,7 +2,9 @@
   isWSL,
   lib,
   ...
-}: {
+}:
+with lib; 
+{
   programs.alacritty = {
     enable = !isWSL;
 
