@@ -238,7 +238,8 @@ in {
   imports = [
     ./programs/alacritty.nix
     ./programs/kitty.nix
-  ]
+  ];
+
   # programs.alacritty = lib.mkIf (!isWSL) {
   #   import ./programs/alacritty.nix { inherit pkgs; };
   # };
