@@ -49,6 +49,7 @@ in {
     pkgs.lazygit
     pkgs.mysql84
     pkgs.neovim
+    pkgs.pinentry-tty
     pkgs.ripgrep
     pkgs.sentry-cli
     pkgs.shellcheck
