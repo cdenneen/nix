@@ -1,8 +1,12 @@
 {
   inputs,
   isWSL,
+  pkgs,
   ...
 }:
+let
+  isLinux = pkgs.stdenv.isLinux;
+in 
 {
   programs.i3status = {
     enable = isLinux && !isWSL;

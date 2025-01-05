@@ -38,8 +38,8 @@ in {
     pkgs.eza
     pkgs.fd
     pkgs.fzf
+    pkgs.gcc
     pkgs.gh
-    pkgs.gnupg
     pkgs.htop
     pkgs.jq
     pkgs.k9s
@@ -139,6 +139,7 @@ in {
     enableSshSupport = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableScDaemon = true;
     pinentryPackage = pkgs.pinentry-tty;
 
     # cache the keys forever so we don't get asked for a password
@@ -164,11 +165,11 @@ in {
 
   sops.secrets = {
     "gpg_gmail" = {
-      path = "${homeDirectory}/.gnupg/private-keys-v1.d/personal.key";
+      path = "${config.xdg.dataHome}/gpg/private-keys-v1.d/personal.key";
       mode = "0400";
     };
     "gpg_ap" = {
-      path = "${homeDirectory}/.gnupg/private-keys-v1.d/work.key";
+      path = "${config.xdg.dataHome}/gpg/private-keys-v1.d/work.key";
       mode = "0400";
     };
   };
