@@ -1,0 +1,29 @@
+{
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    userName = "Chris Denneen";
+    userEmail = "cdenneen@gmail.com";
+    ignores = [ ".DS_Store" "Thumbs.db" ];
+    signing = {
+      key = "BFEB75D960DFAA6B";
+      signByDefault = false;
+    };
+    aliases = {
+      cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
+      prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+      root = "rev-parse --show-toplevel";
+    };
+    extraConfig = {
+      branch.autosetuprebase = "always";
+      color.ui = true;
+      core.askPass = ""; # needs to be empty to use terminal for ask pass
+      credential.helper = "store"; # want to make this more secure
+      github.user = "cdenneen";
+      pull.rebase = "true";
+      push.default = "tracking";
+      push.autoSetupRemote = true;
+      init.defaultBranch = "main";
+    };
+  };
+}
