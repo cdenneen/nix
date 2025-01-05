@@ -1,6 +1,4 @@
-{ isWSL, inputs, self, ... }:
-
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
@@ -441,7 +439,7 @@ in {
 
   sops = {
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
-    defaultSopsFile = "${self}/users/cdenneen/secrets/secret.yaml";
+    defaultSopsFile = "${inputs.self}/users/cdenneen/secrets/secret.yaml";
     validateSopsFiles = false;
   };
 
