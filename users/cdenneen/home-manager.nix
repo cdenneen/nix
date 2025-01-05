@@ -89,8 +89,6 @@ in {
   };
 
   home.file = {
-    ".gdbinit".source = ./gdbinit;
-    ".inputrc".source = ./inputrc;
     ".kube/switch-config.yaml".source = ./switch-config.yaml;
   } // (if isDarwin then {
     "Library/Application Support/jj/config.toml".source = ./jujutsu.toml;
