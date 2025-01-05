@@ -49,7 +49,6 @@ in {
     pkgs.lazygit
     pkgs.mysql84
     pkgs.neovim
-    pkgs.pinentry-tty
     pkgs.ripgrep
     pkgs.sentry-cli
     pkgs.shellcheck
@@ -119,13 +118,13 @@ in {
   #---------------------------------------------------------------------
 
   imports = [
+    ./gnupg.nix
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/direnv.nix
     ./programs/eza.nix
     ./programs/fzf.nix
     ./programs/git.nix
-    ./programs/gpg.nix
     ./programs/i3status.nix
     ./programs/jujutsu.nix
     ./programs/keychain.nix
@@ -134,19 +133,6 @@ in {
     ./programs/tmux.nix
     ./programs/zsh.nix
   ];
-
-  services.gpg-agent = {
-    enable = isLinux;
-    enableSshSupport = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableScDaemon = true;
-    pinentryPackage = pkgs.pinentry-tty;
-
-    # cache the keys forever so we don't get asked for a password
-    defaultCacheTtl = 31536000;
-    maxCacheTtl = 31536000;
-  };
 
   xresources.extraConfig = builtins.readFile ./Xresources;
 

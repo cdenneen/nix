@@ -1,6 +1,7 @@
 {
-    pkgs,
-    ...
+  config,
+  pkgs,
+  ...
 }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
@@ -13,25 +14,59 @@ in
     syntaxHighlighting.enable = true;
 
     loginExtra = builtins.readFile ./zlogin;
+    logoutExtra = builtins.readFile ./zlogout;
+
+    history = {
+      append = true;
+      expireDuplicatesFirst = true;
+      extended = true;
+      ignoreAllDups = true;
+      ignoreDups = true;
+      ignoreSpace = true;
+      path = ".local/state/zsh/history";
+      save = 100000;
+      share = true;
+      size = 130000;
+    };
+
+    localVariables = {
+    };
 
     shellAliases = {
+      c = "clear";
+      ll = "ls -lahF --color=always";
+      e = "$EDITOR";
+      se = "sudoedit";
+      ec = "nvim --cmd ':lua vim.g.noplugins=1' "; #nvim --clean
+      g = "git";
+
       ga = "git add";
+      gb = "git branch";
       gc = "git commit";
+      gcm = "git commit -m";
       gco = "git checkout";
+      gcob = "git checkout -b";
       gcp = "git cherry-pick";
+      gd = "git diff";
       gdiff = "git diff";
+      gf = "git fetch";
       gl = "git prettylog";
+      gm = "git merge";
       gp = "git push";
-      gs = "git status";
+      gpr = "git pull --rebase";
+      gr = "git rebase -i";
+      gs = "git status -sb";
       gt = "git tag";
+      gu = "git reset @ --"; # think git unstage
+      gx = "git reset --hard @";
 
       jf = "jj git fetch";
       jn = "jj new";
       js = "jj st";
 
+      vi = "nvim";
       vim = "nvim";
       ls = "ls --color";
-      clean = "clear";
       switch = if pkgs.stdenv.isDarwin then "darwin-rebuild switch --flake github:cdenneen/nixos-config#mac" else "sudo nixos-rebuild switch --flake github:cdenneen/nixos-config#vm-aarch64-utm";
 
     } // (if isLinux then {
@@ -47,47 +82,11 @@ in
     };
 
     initExtra = ''
-      export EDITOR=nvim
-      if [ -n "$TTY" ]; then
-        export GPG_TTY=$(tty)
-      else
-        export GPG_TTY="$TTY"
-      fi
-
-      # SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      gpgconf --launch gpg-agent
-
       bindkey -e
-
-      # disable sort when completing `git checkout`
-      zstyle ':completion:*:git-checkout:*' sort false
-      # set descriptions format to enable group support
-      # NOTE: don't use escape sequences here, fzf-tab will ignore them
-      zstyle ':completion:*:descriptions' format '[%d]'
-      # set list-colors to enable filename colorizing
-      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-      zstyle ':completion:*' menu no
-      # preview directory's content with eza when completing cd
-      zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $realpath'
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-      zstyle ':fzf-tab:complete:ls:*' fzf-preview 'cat $realpath'
-      # switch group using `<` and `>`
-      zstyle ':fzf-tab:*' switch-group '<' '>'
 
       bindkey '^[w' kill-region
 
       zle_highlight+=(paste:none)
-
-      setopt appendhistory
-      setopt sharehistory
-      setopt hist_ignore_space
-      setopt hist_ignore_all_dups
-      setopt hist_save_no_dups
-      setopt hist_ignore_dups
-      setopt hist_find_no_dups
-      setopt hist_reduce_blanks
 
       #█▓▒░ load configs
       for config (~/.config/zsh/*.zsh) source $config

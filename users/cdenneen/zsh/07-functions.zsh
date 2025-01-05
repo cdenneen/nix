@@ -43,3 +43,26 @@ function 1pweditfile() {
 function 1pwurl() {
 	echo "$1" | sed 's/^.*i=//;s/\&.*$//'
 }
+
+function update_secrets() {
+  local secrets_file="$HOME/.secrets"
+
+  {
+    echo "export AZURE_DEFAULT_USERNAME=\"$(op read 'op://private/office 365/username')\""
+    echo "export AZURE_DEFAULT_PASSWORD=\"$(op read 'op://private/office 365/password')\""
+    echo "export GITLAB_TOKEN=\"$(op read 'op://private/gitlab personal access token/token')\""
+    echo "export TF_HTTP_PASSWORD=\"$(op read 'op://private/gitlab personal access token/token')\""
+    echo "export TF_HTTP_USERNAME=\"$(op read 'op://private/gitlab personal access token/username')\""
+    echo "export TF_VAR_gitlab_token=\"$(op read 'op://gss/GitLab_tf-eks/credential')\""
+    echo "export CI_REGISTRY_USER=\"$(op read 'op://Amazon Web Services/JFrog_gitlabci/username')\""
+    echo "export CI_REGISTRY_PASSWORD=\"$(op read 'op://Amazon Web Services/JFrog_gitlabci/credential')\""
+    echo "export GI_RENOVATE_TOKEN=\"$(op read 'op://gss/GitLab_gi-renovate/credential')\""
+    echo "export RENOVATE_TOKEN=\"$(op read 'op://gss/GitLab_renovate-runner-ci/credential')\""
+    echo "export DOCKER_HUB_PASSWORD=\"$(op read 'op://gss/DockerHub_token/credential')\""
+    #echo "export GITHUB_TOKEN=\"$(op read 'op://gss/GitHub_gitops-token/token')\""
+    echo "export GITHUB_TOKEN=\"$(op read 'op://private/GH_TOKEN/token' --account my)\""
+    echo "export OPENAI_API_KEY=\"$(op read 'op://private/OpenAI/credential')\""
+  } > "$secrets_file"
+
+  echo "Secrets have been updated in $secrets_file"
+}
