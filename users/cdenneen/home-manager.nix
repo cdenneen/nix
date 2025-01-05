@@ -40,6 +40,7 @@ in {
     pkgs.fzf
     pkgs.gcc
     pkgs.gh
+    pkgs.ghostty
     pkgs.htop
     pkgs.jq
     pkgs.k9s
