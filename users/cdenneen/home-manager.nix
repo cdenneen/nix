@@ -165,11 +165,11 @@ in {
 
   sops.secrets = {
     "gpg_gmail" = {
-      path = "${config.xdg.dataHome}/gpg/private-keys-v1.d/personal.key";
+      path = "${homeDirectory}/.gnupg/private-keys-v1.d/personal.key";
       mode = "0400";
     };
     "gpg_ap" = {
-      path = "${config.xdg.dataHome}/gpg/private-keys-v1.d/work.key";
+      path = "${homeDirectory}/.gnupg/private-keys-v1.d/work.key";
       mode = "0400";
     };
   };
