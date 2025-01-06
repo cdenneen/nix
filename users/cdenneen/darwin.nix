@@ -15,7 +15,6 @@
     raycast
     rectangle
     slack
-    spotify
     ssm-session-manager-plugin
     stats
     synology-drive-client
@@ -45,6 +44,7 @@
       "megasync"
       "microsoft-edge"
       "monodraw"
+      "spotify"
       "teamviewer"
     ];
     masApps = {
