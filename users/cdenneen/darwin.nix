@@ -12,7 +12,6 @@
     itsycal
     keycastr
     maccy
-    megasync
     raycast
     rectangle
     slack
@@ -44,6 +43,7 @@
       "imageoptim"
       "keybase"
       "jumpcut"
+      "megasync"
       "microsoft-edge"
       "monodraw"
       "teamviewer"
