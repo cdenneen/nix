@@ -1,11 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
+  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isLinux;
 in 
 {
   programs.zsh = {
@@ -67,7 +63,7 @@ in
       vi = "nvim";
       vim = "nvim";
       ls = "ls --color";
-      switch = if pkgs.stdenv.isDarwin then "darwin-rebuild switch --flake github:cdenneen/nixos-config#mac" else "sudo nixos-rebuild switch --flake github:cdenneen/nixos-config#vm-aarch64-utm";
+      switch = if isDarwin then "darwin-rebuild switch --flake github:cdenneen/nixos-config#mac" else "sudo nixos-rebuild switch --flake github:cdenneen/nixos-config#vm-aarch64-utm";
 
     } // (if isLinux then {
       # Two decades of using a Mac has made this such a strong memory

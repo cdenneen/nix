@@ -101,7 +101,7 @@ in {
 
     "nvim".source = builtins.fetchGit {
       url = "https://github.com/cdenneen/nvim";
-      rev = "fdbc03e040eb796fe1c51c2292015f2e5605d1b8";
+      ref = "308aa70299e1cfd07b1efa04aafba2d1990a1755";
     };
   } // (if isDarwin then {
     # Rectangle.app. This has to be imported manually using the app.
