@@ -10,7 +10,6 @@
     iina
     istatmenus
     itsycal
-    keybase-gui
     keycastr
     maccy
     megasync
@@ -43,6 +42,7 @@
       "hammerspoon"
       "hiddenbar"
       "imageoptim"
+      "keybase"
       "jumpcut"
       "microsoft-edge"
       "monodraw"
