@@ -1,6 +1,8 @@
 { config, inputs, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     arc-browser
     brave
