@@ -54,5 +54,11 @@
       user = "cdenneen";
       darwin = true;
     };
+
+    darwinConfigurations.macbook-intel = mkSystem "macbook-intel" rec {
+      system = "x86_64-darwin";
+      user = "cdenneen";
+      darwin = true;
+    };
   };
 }
