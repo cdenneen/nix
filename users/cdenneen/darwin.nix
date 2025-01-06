@@ -133,7 +133,7 @@
   #   "Set AppleSymbolicHotKeys:64:enabled false"
   # '';
 
-  targets.darwin.plists = {
+  lib.targets.darwin.plists = {
     # Disable Spotlight hotkey
     "Library/Preferences/com.apple.symbolichotkeys.plist" = {
       "AppleSymbolicHotKeys:64:enabled" = false;
