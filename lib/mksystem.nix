@@ -7,7 +7,8 @@ name:
   system,
   user,
   darwin ? false,
-  wsl ? false
+  wsl ? false,
+  ghostty ? false
 }:
 
 let
