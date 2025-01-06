@@ -119,7 +119,7 @@
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   };
 
-  system.default.CustomUserPreferences = {
+  system.defaults.CustomUserPreferences = {
     "com.raycast.macos" = {
       "raycastGlobalHotkey" = "Command-49";
       "raycastShowInMenuBar" = true;
