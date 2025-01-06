@@ -12,6 +12,7 @@
     itsycal
     keycastr
     maccy
+    mas
     raycast
     rectangle
     slack
@@ -25,7 +26,6 @@
       "aws/tap/eks-node-viewer"
       "danielfoehrkn/switch/switch"
       "fluxcd/tap/flux"
-      "mas"
     ];
     casks  = [
       "1password"
