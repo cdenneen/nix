@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    _1password-gui
     arc-browser
     brave
     discord
