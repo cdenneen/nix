@@ -40,7 +40,6 @@ in {
     pkgs.fzf
     pkgs.gcc
     pkgs.gh
-    pkgs.ghostty
     pkgs.htop
     pkgs.jq
     pkgs.k9s
@@ -123,6 +122,7 @@ in {
     ./programs/direnv.nix
     ./programs/eza.nix
     ./programs/fzf.nix
+    ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/i3status.nix
     ./programs/jujutsu.nix
