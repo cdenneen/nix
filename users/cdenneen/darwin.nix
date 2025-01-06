@@ -119,17 +119,19 @@
     NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   };
 
-  system.keyboard.shortcuts = {
-    enable = true;
-    spotlight.search.enable = false;
-  };
-
-  targets.darwin.plists = {
-    # Disable Spotlight hotkey
-    "Library/Preferences/com.raycast.macos.plist" = {
+  system.default.CustomUserPreferences = {
+    "com.raycast.macos" = {
       "raycastGlobalHotkey" = "Command-49";
+      "raycastShowInMenuBar" = true;
+      "raycastShouldFollowSystemApperance" = 1;
     };
   };
+
+  system.activationScripts.extraActivation.text = ''
+    # Let Raycast have cmd+space instead of Spotlight
+    /usr/libexec/PlistBuddy ${user.home}/Library/Preferences/com.apple.symbolichotkeys.plist -c \
+    "Set AppleSymbolicHotKeys:64:enabled false"
+  '';
 
   security.pam.enableSudoTouchIdAuth = true;
 }
