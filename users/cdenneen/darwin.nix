@@ -101,12 +101,10 @@
     dock.autohide  = true;
     dock.largesize = 64;
     dock.persistent-apps = [
-      "/System/Applications/Ghostty.app"
+      "${pkgs.kitty}/Applications/Kitty.app"
       "/System/Applications/Messages.app"
       "/Applications/Safari.app"
       "/Applications/Firefox Developer Edition.app"
-      "/System/Applications/Mail.app"
-      "/System/Applications/Calendar.app"
     ];
     finder.AppleShowAllExtensions = true;
     finder.FXPreferredViewStyle = "clmv";
