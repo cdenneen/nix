@@ -47,13 +47,16 @@ in {
     pkgs.kubernetes-helm
     pkgs.kubeswitch
     pkgs.lazygit
+    pkgs.mkalias
     pkgs.mysql84
     pkgs.neovim
     pkgs.ripgrep
     pkgs.sentry-cli
+    pkgs.sesh
     pkgs.shellcheck
     pkgs.terraform
     pkgs.terragrunt
+    pkgs.thefuck
     pkgs.tmux
     pkgs.tree
     pkgs.watch
@@ -69,7 +72,6 @@ in {
     pkgs.chromium
     pkgs.firefox
     pkgs.rofi
-    pkgs.valgrind
     pkgs.zathura
     pkgs.xfce.xfce4-terminal
   ]);
