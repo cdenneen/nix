@@ -19,7 +19,6 @@
     ssm-session-manager-plugin
     stats
     synology-drive-client
-    teams
   ];
   homebrew = {
     enable = true;
