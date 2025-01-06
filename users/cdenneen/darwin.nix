@@ -127,11 +127,31 @@
     };
   };
 
-  system.activationScripts.extraActivation.text = ''
-    # Let Raycast have cmd+space instead of Spotlight
-    /usr/libexec/PlistBuddy ${user.home}/Library/Preferences/com.apple.symbolichotkeys.plist -c \
-    "Set AppleSymbolicHotKeys:64:enabled false"
-  '';
+  # system.activationScripts.extraActivation.text = ''
+  #   # Let Raycast have cmd+space instead of Spotlight
+  #   /usr/libexec/PlistBuddy ${user.home}/Library/Preferences/com.apple.symbolichotkeys.plist -c \
+  #   "Set AppleSymbolicHotKeys:64:enabled false"
+  # '';
+
+  targets.darwin.plists = {
+    # Disable Spotlight hotkey
+    "Library/Preferences/com.apple.symbolichotkeys.plist" =
+      {
+        AppleSymbolicHotKeys = {
+          64 = {
+            enabled = 0;
+            value = {
+              parameters = (
+                32;
+                49;
+                1048576;
+              );
+              type = standard;
+            };
+          };
+        };
+      };
+  };
 
   security.pam.enableSudoTouchIdAuth = true;
 }
