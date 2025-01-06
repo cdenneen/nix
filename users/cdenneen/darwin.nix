@@ -101,7 +101,9 @@
     dock.autohide  = true;
     dock.largesize = 64;
     dock.persistent-apps = [
+      "${pkgs.alacritty}/Applications/Alacritty.app"
       "${pkgs.kitty}/Applications/Kitty.app"
+      "${pkgs.ghostty}/Applications/Ghostty.app"
       "/System/Applications/Messages.app"
       "/Applications/Safari.app"
       "/Applications/Firefox Developer Edition.app"
