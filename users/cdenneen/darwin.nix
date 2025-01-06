@@ -135,22 +135,9 @@
 
   targets.darwin.plists = {
     # Disable Spotlight hotkey
-    "Library/Preferences/com.apple.symbolichotkeys.plist" =
-      {
-        AppleSymbolicHotKeys = {
-          64 = {
-            enabled = 0;
-            value = {
-              parameters = (
-                32;
-                49;
-                1048576;
-              );
-              type = standard;
-            };
-          };
-        };
-      };
+    "Library/Preferences/com.apple.symbolichotkeys.plist" = {
+      "AppleSymbolicHotKeys:64:enabled" = false;
+    };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
