@@ -60,7 +60,7 @@
       "puppetlabs/puppet"
     ];
     onActivation = {
-      cleanup = true;
+      cleanup = "zap";
       autoUpdate = true;
       upgrade = true;
     };
