@@ -5,7 +5,6 @@
     arc-browser
     brave
     discord
-    firefox-devedition
     iina
     istatmenus
     itsycal
@@ -36,6 +35,7 @@
       "amazon-photos"
       "cleanshot"
       "evernote"
+      "firefox@developer-edition"
       "fliqlo"
       "google-chrome"
       "hammerspoon"
