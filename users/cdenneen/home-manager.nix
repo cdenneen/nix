@@ -47,7 +47,6 @@ in {
     pkgs.kubernetes-helm
     pkgs.kubeswitch
     pkgs.lazygit
-    pkgs.mkalias
     pkgs.mysql84
     pkgs.neovim
     pkgs.ripgrep

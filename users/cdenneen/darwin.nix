@@ -13,6 +13,7 @@
     keycastr
     maccy
     mas
+    mkalias
     raycast
     rectangle
     slack
