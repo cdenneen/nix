@@ -74,7 +74,7 @@
   };
 
   fonts.packages = [
-    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerdfonts.jetbrains-mono
   ];
 
   system.activationScripts.applications.text = let
