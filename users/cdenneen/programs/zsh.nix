@@ -75,7 +75,9 @@ in
     sessionVariables = {
       # This is required for the zoxide integration
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=8";
-    };
+    } // (if isDarwin then {
+      XDG_RUNTIME_DIR = "$(getconf DARWIN_USER_TEMP_DIR)";
+    } else {});
 
     initExtra = ''
       bindkey -e
