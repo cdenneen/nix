@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ghostty, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -103,7 +103,7 @@
     dock.persistent-apps = [
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "${pkgs.kitty}/Applications/Kitty.app"
-    ] ++ (lib.optionals) pkgs.stdenv.isAarch64 [
+    ] ++ (lib.optionals) ghostty [
       "${pkgs.ghostty}/Applications/Ghostty.app"
     ] ++ [
       "/System/Applications/Messages.app"

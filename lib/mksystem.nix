@@ -8,6 +8,7 @@ name:
   user,
   darwin ? false,
   wsl ? false,
+  ghostty ? true,
 }:
 
 let

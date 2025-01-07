@@ -1,13 +1,12 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ghostty, ... }:
 with lib;
 let
   cfg = config.programs.ghostty;
 in
 {
-  imports = [ { programs.ghostty.enable = true; } ];
-
   options.programs.ghostty = {
-    enable = mkEnableOption "ghostty";
+    enable = mkEnableOption ghostty;
+    package = pkgs.ghostty;
   };
 
   config = mkIf cfg.enable {

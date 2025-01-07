@@ -58,6 +58,8 @@
     darwinConfigurations.macbook_x86 = mkSystem "macbook-pro-m1" rec {
       system = "x86_64-darwin";
       user = "cdenneen";
+      darwin = true;
+      ghostty = false;
     };
   };
 }
