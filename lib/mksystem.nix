@@ -25,7 +25,6 @@ let
   home-manager = if darwin then inputs.home-manager.darwinModules else inputs.home-manager.nixosModules;
 in systemFunc rec {
   inherit system;
-  inherit ghostty;
 
   modules = [
     # Apply our overlays. Overlays are keyed by system type so we have

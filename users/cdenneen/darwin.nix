@@ -103,7 +103,7 @@
     dock.persistent-apps = [
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "${pkgs.kitty}/Applications/Kitty.app"
-    ] ++ (lib.optionals) ghostty [
+    ] ++ (lib.optionals) inputs.ghostty [
       "${pkgs.ghostty}/Applications/Ghostty.app"
     ] ++ [
       "/System/Applications/Messages.app"
