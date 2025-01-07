@@ -39,7 +39,7 @@ in systemFunc rec {
     (if isWSL then inputs.nixos-wsl.nixosModules.wsl else {})
 
     machineConfig
-    userOSConfig
+    userOSConfig { inherit ghostty; };
     home-manager.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
