@@ -5,14 +5,14 @@
     # Pin our primary nixpkgs repository. This is the main nixpkgs repository
     # we'll use for our configurations. Be very careful changing this because
     # it'll impact your entire system.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Build a custom WSL installer
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,14 +25,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, darwin, ghostty, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, sops-nix, darwin, ... }@inputs: let
     # Overlays is the list of overlays we want to apply from flake inputs.
     overlays = [
 
