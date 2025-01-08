@@ -104,6 +104,7 @@ in {
       url = "https://github.com/cdenneen/nvim";
       rev = "5777e58132ee21cb6e04f29b163d56b28306c80c";
       ref = "main";
+      allRefs = true;
     };
   } // (if isDarwin then {
     # Rectangle.app. This has to be imported manually using the app.
