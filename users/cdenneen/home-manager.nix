@@ -59,7 +59,6 @@ in {
     pkgs.tmux
     pkgs.tree
     pkgs.watch
-    pkgs.zoxide
 
     # Node is required for Copilot.vim
     pkgs.nodejs
@@ -133,6 +132,7 @@ in {
     ./programs/kitty.nix
     ./programs/starship.nix
     ./programs/tmux.nix
+    ./programs/zoxide.nix
     ./programs/zsh.nix
   ];
 
