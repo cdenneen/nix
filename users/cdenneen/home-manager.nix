@@ -91,9 +91,9 @@ in {
 
   home.file = {
     ".kube/switch-config.yaml".source = ./switch-config.yaml;
-  } // (if isDarwin then {
+  } // (lib.optionalAttrs isDarwin {
     "Library/Application Support/jj/config.toml".source = ./jujutsu.toml;
-  } else {});
+  });
 
   xdg.configFile = {
     "zsh".source = ./zsh;
@@ -106,13 +106,13 @@ in {
       ref = "main";
       allRefs = true;
     };
-  } // (if isDarwin then {
+  } // (lib.optionalAttrs isDarwin {
     # Rectangle.app. This has to be imported manually using the app.
     "rectangle/RectangleConfig.json".text = builtins.readFile ./RectangleConfig.json;
-  } else {}) // (if isLinux then {
+  }) // (lib.optionalAttrs isLinux {
     "ghostty/config".text = builtins.readFile ./ghostty.linux;
     "jj/config.toml".source = ./jujutsu.toml;
-  } else {});
+  });
 
   #---------------------------------------------------------------------
   # Programs
