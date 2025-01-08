@@ -6,7 +6,7 @@
   ec2.efi = true;
 
   services.udisks2.enable = lib.mkForce false;
-  services.openssh.settings.PermitRootLogin = "prohibit-password";
+  services.openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password";
 
   # Lots of stuff that uses aarch64 that claims doesn't work, but actually works.
   nixpkgs.config.allowUnfree = true;
