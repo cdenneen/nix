@@ -4,6 +4,10 @@
     lfs.enable = true;
     userName = "Chris Denneen";
     userEmail = "cdenneen@gmail.com";
+    signing = {
+      signByDefault = true;
+      key = null;
+    };
     ignores = [ ".DS_Store" "Thumbs.db" ];
     aliases = {
       cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
