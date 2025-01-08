@@ -1,11 +1,9 @@
 { config, pkgs, modulesPath, ... }: {
   imports = [
-    (modulesPath + "/virtualization/amazon-image.nix")
+    (modulesPath + "/virtualisation/amazon-image.nix")
     ./vm-shared.nix
   ];
-
-  # Interface is this on my EC2
-  networking.interfaces.ens5.useDHCP = true;
+  ec2.efi = true;
 
   # Lots of stuff that uses aarch64 that claims doesn't work, but actually works.
   nixpkgs.config.allowUnfree = true;
