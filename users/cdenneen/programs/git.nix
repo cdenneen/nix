@@ -5,10 +5,6 @@
     userName = "Chris Denneen";
     userEmail = "cdenneen@gmail.com";
     ignores = [ ".DS_Store" "Thumbs.db" ];
-    signing = {
-      key = "BFEB75D960DFAA6B";
-      signByDefault = false;
-    };
     aliases = {
       cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
@@ -25,5 +21,29 @@
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
     };
+    includes = [
+      {
+        condition = "gitdir:~/src/ap";
+        contents = {
+          user = {
+            name = "Christopher Denneen";
+            email = "CDenneen@ap.org";
+            signingkey = "3834814930B83A30";
+          };
+          commit.gpgsign = true;
+        };
+      }
+      {
+        condition = "gitdir:~/src/personal";
+        contents = {
+          user = {
+            name = "Chris Denneen";
+            email = "cdenneen@gmail.com";
+            signingkey = "BFEB75D960DFAA6B";
+          };
+          commit.gpgsign = true;
+        };
+      }
+    ];
   };
 }
