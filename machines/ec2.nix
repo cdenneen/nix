@@ -1,18 +1,11 @@
 { config, pkgs, modulesPath, ... }: {
   imports = [
-    ./hardware/vm-aarch64-utm.nix
+    (modulesPath + "/virtualization/amazon-image.nix")
     ./vm-shared.nix
   ];
 
-  # Interface is this on my M1
-  networking.interfaces.enp0s10.useDHCP = true;
-
-  # Qemu
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
-
-  # For now, we need this since hardware acceleration does not work.
-  environment.variables.LIBGL_ALWAYS_SOFTWARE = "1";
+  # Interface is this on my EC2
+  networking.interfaces.ens5.useDHCP = true;
 
   # Lots of stuff that uses aarch64 that claims doesn't work, but actually works.
   nixpkgs.config.allowUnfree = true;

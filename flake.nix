@@ -38,6 +38,11 @@
     };
   in {
 
+    nixosConfigurations.ec2 = mkSystem "ec2" rec {
+      system = "aarch64-linux";
+      user = "cdenneen";
+    };
+
     nixosConfigurations.vm-aarch64-utm = mkSystem "vm-aarch64-utm" rec {
       system = "aarch64-linux";
       user = "cdenneen";

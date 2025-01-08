@@ -10,7 +10,11 @@
   users.users.cdenneen = {
     isNormalUser = true;
     home = "/home/cdenneen";
-    extraGroups = [ "docker" "wheel" ];
+    extraGroups = [
+      "docker"
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
     hashedPassword = "$6$m57xh/c4gipjewT6$ovt9lGhsi.m6WHHUvrRYvbi8k63mSBnkxV3r2VNg9iJBL7sKYDGpovjDgk21cAmz44IOvwJek9eoytlEZGwi6/";
     openssh.authorizedKeys.keys = [

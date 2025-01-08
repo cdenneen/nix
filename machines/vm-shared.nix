@@ -16,6 +16,12 @@ in {
       keep-outputs = true
       keep-derivations = true
     '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than +3";
+    };
+    settings.auto-optimise-store = true;
   };
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -57,12 +63,17 @@ in {
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
-        fcitx5-chinese-addons
+        # fcitx5-chinese-addons
       ];
     };
   };
 
   # setup windowing environment
+  services.displayManager = if linuxGnome then {
+    defaultSession = "gnome";
+  } else {
+    defaultSession = "none+i3";
+  };
   services.xserver = if linuxGnome then {
     enable = true;
     xkb.layout = "us";
@@ -71,7 +82,7 @@ in {
   } else {
     enable = true;
     xkb.layout = "us";
-    dpi = 220;
+    # dpi = 220;
 
     desktopManager = {
       xterm.enable = false;
@@ -79,7 +90,6 @@ in {
     };
 
     displayManager = {
-      defaultSession = "none+i3";
       lightdm.enable = true;
 
       # AARCH64: For now, on Apple Silicon, we must manually set the
@@ -93,6 +103,10 @@ in {
       i3.enable = true;
     };
   };
+
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [];
+  # xdg.portal.config.common.default = "*";
 
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
@@ -131,7 +145,7 @@ in {
     # This is needed for the vmware user tools clipboard to work.
     # You can test if you don't need this by deleting this and seeing
     # if the clipboard sill works.
-    gtkmm3
+    #gtkmm3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
