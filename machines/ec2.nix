@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }: {
   imports = [
     (modulesPath + "/virtualisation/amazon-image.nix")
-    ./vm-shared.nix
+    ./vm-shared-ec2.nix
   ];
   ec2.efi = true;
 
