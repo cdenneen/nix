@@ -30,7 +30,7 @@ in {
   ];
 
   # Define your hostname.
-  networking.hostName = "dev";
+  networking.hostName = "eros";
 
   # Set your time zone.
   time.timeZone = "America/New_York";
