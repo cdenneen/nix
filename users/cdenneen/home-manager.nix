@@ -40,6 +40,7 @@ in {
     pkgs.fzf
     pkgs.gcc
     pkgs.gh
+    pkgs.go
     pkgs.htop
     pkgs.jq
     pkgs.k9s
@@ -47,9 +48,11 @@ in {
     pkgs.kubernetes-helm
     pkgs.kubeswitch
     pkgs.lazygit
+    pkgs.lua-language-server
     pkgs.mysql84
     pkgs.neovim
     pkgs.ripgrep
+    pkgs.ruby
     pkgs.sentry-cli
     pkgs.sesh
     pkgs.shellcheck
@@ -58,6 +61,7 @@ in {
     pkgs.thefuck
     pkgs.tmux
     pkgs.tree
+    pkgs.unzip
     pkgs.watch
 
     # Node is required for Copilot.vim
