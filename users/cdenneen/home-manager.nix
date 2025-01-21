@@ -90,6 +90,7 @@ in {
     PAGER = "less -FirSwX";
     MANPAGER = "${manpager}/bin/manpager";
     DIRENV_WARN_TIMEOUT = "100s";
+    MUTTER_DEBUG_KMS_THREAD_TYPE="user";
   };
 
   home.file = {
@@ -146,7 +147,7 @@ in {
   home.pointerCursor = lib.mkIf (isLinux && !isWSL) {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
-    size = 40;
+    size = 128;
     x11.enable = true;
     gtk.enable = true;
   };

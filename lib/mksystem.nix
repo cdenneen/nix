@@ -15,6 +15,9 @@ let
   # True if this is a WSL system.
   isWSL = wsl;
 
+  # True if Linux, which is heuristic for not being Darwin.
+  isLinux = !darwin && !isWSL;
+
   # The config files for this system.
   machineConfig = ../machines/${name}.nix;
   userOSConfig = ../users/${user}/${if darwin then "darwin" else "nixos" }.nix;
@@ -37,6 +40,9 @@ in systemFunc rec {
 
     # Bring in WSL if this is a WSL build
     (if isWSL then inputs.nixos-wsl.nixosModules.wsl else {})
+
+    # Snapd on Linux
+    (if isLinux then inputs.nix-snapd.nixosModules.default else {})
 
     machineConfig
     userOSConfig

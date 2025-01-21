@@ -5,7 +5,7 @@
   ];
 
   # Interface is this on my M1
-  networking.interfaces.enp0s10.useDHCP = true;
+  # networking.interfaces.enp0s1.useDHCP = true;
 
   # Qemu
   services.qemuGuest.enable = true;
@@ -22,6 +22,6 @@
   # services.displayManager.autoLogin.user = "cdenneen";
   #
   # # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 }

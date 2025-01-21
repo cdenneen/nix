@@ -7,11 +7,17 @@
   # Since we're using zsh as our shell
   programs.zsh.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    _1password-gui
+    teams-for-linux
+  ];
+
   users.users.cdenneen = {
     isNormalUser = true;
     home = "/home/cdenneen";
     extraGroups = [
       "docker"
+      "lxd"
       "networkmanager"
       "wheel"
     ];
