@@ -1,3 +1,7 @@
+#█▓▒░ fake x hax
+export DISPLAY=:0
+(&>/dev/null ~/.local/bin/exorg &)
+
 #█▓▒░ ssh & gpg keychain init
 eval $(keychain --dir "$XDG_RUNTIME_DIR"\
 	--absolute -q --agents ssh,gpg \

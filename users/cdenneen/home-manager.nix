@@ -34,6 +34,7 @@ in {
     pkgs.atuin
     pkgs.autojump
     pkgs.bat
+    pkgs.cargo
     pkgs.direnv
     pkgs.eza
     pkgs.fd
@@ -95,6 +96,7 @@ in {
 
   home.file = {
     ".kube/switch-config.yaml".source = ./switch-config.yaml;
+    ".local/bin".source = ./bin;
   } // (lib.optionalAttrs isDarwin {
     "Library/Application Support/jj/config.toml".source = ./jujutsu.toml;
   });
@@ -104,12 +106,13 @@ in {
     "i3/config".text = builtins.readFile ./i3;
     "rofi/config.rasi".text = builtins.readFile ./rofi;
 
-    "nvim".source = builtins.fetchGit {
-      url = "https://github.com/cdenneen/nvim";
-      rev = "5777e58132ee21cb6e04f29b163d56b28306c80c";
-      ref = "main";
-      allRefs = true;
-    };
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/src/personal/nvimlocal";
+    # "nvim".source = builtins.fetchGit {
+    #   url = "https://github.com/cdenneen/nvim";
+    #   rev = "5777e58132ee21cb6e04f29b163d56b28306c80c";
+    #   ref = "main";
+    #   allRefs = true;
+    # };
   } // (lib.optionalAttrs isDarwin {
     # Rectangle.app. This has to be imported manually using the app.
     "rectangle/RectangleConfig.json".text = builtins.readFile ./RectangleConfig.json;

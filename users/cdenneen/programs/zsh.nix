@@ -88,6 +88,16 @@ in
 
       #█▓▒░ load configs
       for config (~/.config/zsh/*.zsh) source $config
+
+      # Determine the target file of the symlink
+      secrets_target=$(readlink ~/.secrets || echo ~/.secrets)
+
+      # Check if the target exists and its modification time
+      if [ ! -e "$secrets_target" ] || [ -n "$(find "$secrets_target" -mtime +7 2>/dev/null)" ]; then
+        update_secrets
+      fi
+
+      source ~/.secrets
     '';
 
     plugins = [
