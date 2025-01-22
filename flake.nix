@@ -77,7 +77,6 @@
       system = "x86_64-darwin";
       user = "cdenneen";
       darwin = true;
-      ghostty = false;
     };
   };
 }

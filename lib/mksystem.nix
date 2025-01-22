@@ -8,7 +8,6 @@ name:
   user,
   darwin ? false,
   wsl ? false,
-  ghostty ? true,
 }:
 
 let
@@ -51,7 +50,7 @@ in systemFunc rec {
       home-manager.useUserPackages = true;
       home-manager.backupFileExtension = "backup";
       home-manager.users.${user} = userHMConfig;
-      home-manager.extraSpecialArgs = {inherit isWSL ghostty inputs;};
+      home-manager.extraSpecialArgs = {inherit isWSL inputs;};
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops # sops
       ];

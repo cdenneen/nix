@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ghostty, ... }:
+{ config, inputs, lib, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -102,9 +102,7 @@
     dock.persistent-apps = [
       "${pkgs.alacritty}/Applications/Alacritty.app"
       "${pkgs.kitty}/Applications/Kitty.app"
-    ] ++ (lib.optionals) ghostty [
-      "${pkgs.ghostty}/Applications/Ghostty.app"
-    ] ++ [
+      "/Applications/Ghostty.app"
       "/System/Applications/Messages.app"
       "/Applications/Safari.app"
       "/Applications/Firefox Developer Edition.app"
