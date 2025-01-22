@@ -55,3 +55,21 @@ kubeconfigStores:
     config:
       profile: capdev-sso
       region: us-west-2
+  - kind: eks
+    showPrefix: true
+    id: eksadmin-apss-use1
+    config:
+      profile: eks-apss
+      region: us-east-1
+  - kind: eks
+    showPrefix: true
+    id: eksadmin-prod-use1
+    config:
+      profile: eks-prod
+      region: us-east-1
+  - kind: eks
+    showPrefix: true
+    id: eksadmin-prod-usw2
+    config:
+      profile: eks-prod
+      region: us-west-2

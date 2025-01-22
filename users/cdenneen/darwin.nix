@@ -17,7 +17,6 @@
     raycast
     rectangle
     slack
-    ssm-session-manager-plugin
     stats
     synology-drive-client
   ];

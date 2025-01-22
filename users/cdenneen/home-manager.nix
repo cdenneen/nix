@@ -30,7 +30,6 @@ in {
   home.packages = [
     pkgs._1password-cli
     pkgs.asciinema
-    pkgs.awscli2
     pkgs.atuin
     pkgs.autojump
     pkgs.bat
@@ -102,6 +101,7 @@ in {
   });
 
   xdg.configFile = {
+    "direnv/lib/k8s_context.sh".text = builtins.readFile ./programs/k8s_context.sh;
     "zsh".source = ./zsh;
     "i3/config".text = builtins.readFile ./i3;
     "rofi/config.rasi".text = builtins.readFile ./rofi;
@@ -128,6 +128,7 @@ in {
   imports = [
     ./gnupg.nix
     ./programs/alacritty.nix
+    ./programs/awscli.nix
     ./programs/bash.nix
     ./programs/direnv.nix
     ./programs/eza.nix
@@ -138,6 +139,7 @@ in {
     ./programs/jujutsu.nix
     ./programs/keychain.nix
     ./programs/kitty.nix
+    ./programs/ssh.nix
     ./programs/starship.nix
     ./programs/tmux.nix
     ./programs/zoxide.nix
@@ -162,6 +164,22 @@ in {
   };
 
   sops.secrets = {
+    "cdenneen_ed25519_2024" = {
+      path = "${homeDirectory}/.ssh/cdenneen_ed25519_2024.pem";
+      mode = "0400";
+    };
+    "codecommit_rsa" = {
+      path = "${homeDirectory}/.ssh/codecommit_rsa";
+      mode = "0400";
+    };
+    "id_rsa_cloud9" = {
+      path = "${homeDirectory}/.ssh/id_rsa_cloud9";
+      mode = "0400";
+    };
+    "aws-config" = {
+      path = "${homeDirectory}/.aws/config";
+      mode = "0440";
+    };
     "gpg_gmail" = {
       path = "${homeDirectory}/.gnupg/private-keys-v1.d/personal.key";
       mode = "0400";

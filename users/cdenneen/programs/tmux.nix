@@ -22,7 +22,7 @@ in
     escapeTime = 0;
     historyLimit = 10000;
     keyMode = "vi";
-    newSession = true;
+    newSession = false;
     plugins = with tmuxPlugins; [
       #tmux-nvim
       yank
@@ -58,8 +58,18 @@ in
         '';
       }
       mode-indicator
-      resurrect
-      continuum
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
       {
         plugin = dracula;
         extraConfig = ''
@@ -70,22 +80,50 @@ in
         '';
       }
       sensible
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavour 'mocha'
+
+          set -g @catppuccin_window_left_separator ""
+          set -g @catppuccin_window_right_separator " "
+          set -g @catppuccin_window_middle_separator " █"
+          set -g @catppuccin_window_number_position "right"
+          
+          set -g @catppuccin_window_default_fill "number"
+          set -g @catppuccin_window_default_text "#W"
+          
+          set -g @catppuccin_window_current_fill "number"
+          set -g @catppuccin_window_current_text "#W"
+          
+          set -g @catppuccin_status_modules_left "host session"
+          set -g @catppuccin_status_modules_right "date_time"
+          set -g @catppuccin_status_left_separator  " "
+          set -g @catppuccin_status_right_separator ""
+          set -g @catppuccin_status_fill "icon"
+          set -g @catppuccin_status_connect_separator "no"
+          
+          set -g @catppuccin_directory_text "#{pane_current_path}"
+        '';
+      }
     ];
     resizeAmount = 5;
     reverseSplit = false;
     secureSocket = false;
+    sensibleOnTop = false;
+    shell = "${pkgs.zsh}/bin/zsh";
     shortcut = "l";
     terminal = "xterm-256color";
     mouse = true;
 
     extraConfig = ''
       set -g default-command /run/current-system/sw/bin/zsh
-      set-window-option -g mode-keys vi
+      # set-window-option -g mode-keys vi
 
       # renumber windows after closing
       set -g renumber-windows on
       # start with pane 1
-      set -g pane-base-index 1
+      # set -g pane-base-index 1
 
       set -ga terminal-overrides ",*256col*:Tc"
 
@@ -116,7 +154,7 @@ in
       set -g pane-active-border-style "bg=color0,fg=color5"
 
       # window status
-      set-option -g status-position bottom
+      set-option -g status-position top
       setw -g window-status-format " #[bg=color4,fg=color0,noreverse]▓░ #W "
       setw -g window-status-current-format " #[bg=color10,fg=color0,noreverse]▓░ #W "
       

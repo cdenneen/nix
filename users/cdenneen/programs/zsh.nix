@@ -60,10 +60,17 @@ in
       jn = "jj new";
       js = "jj st";
 
+      k = "kubectl";
+      kprod = "switch eks_eks-prod-us-east-1-prod-2-use1/eks_prod-2-use1";
+      kshared = "switch eks_eks-apss-us-east-1-shared-1-use1/eks_shared-1-use1";
+      kinteract = "switch eks_eks-prod-us-east-1-apinteractives-datateam/eks_apinteractives-datateam";
+      kinteractdr = "switch eks_eks-prod-us-west-2-apinteractives-datateam-dr/eks_apinteractives-datateam-dr";
+
       vi = "nvim";
       vim = "nvim";
       ls = "ls --color";
-      switch = if isDarwin then "darwin-rebuild switch --flake github:cdenneen/nixos-config#mac" else "sudo nixos-rebuild switch --flake github:cdenneen/nixos-config#vm-aarch64-utm";
+      sso = "aws sso login --profile sso-apss --no-browser";
+      s = if isDarwin then "darwin-rebuild switch --flake github:cdenneen/nixos-config#mac" else "sudo nixos-rebuild switch --flake github:cdenneen/nixos-config#vm-aarch64-utm";
 
     } // (if isLinux then {
       # Two decades of using a Mac has made this such a strong memory
@@ -96,6 +103,9 @@ in
       if [ ! -e "$secrets_target" ] || [ -n "$(find "$secrets_target" -mtime +7 2>/dev/null)" ]; then
         update_secrets
       fi
+
+      source <(switcher init zsh)
+      source <(switch completion zsh)
 
       source ~/.secrets
     '';

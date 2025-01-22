@@ -1,11 +1,12 @@
 { config, pkgs, lib, currentSystem, currentSystemName,... }:
 
 let
-  # Turn this to true to use gnome instead of i3. This is a bit
-  # of a hack, I just flip it on as I need to develop gnome stuff
-  # for now.
-  linuxGnome = true;
+  desktop = "gnome";
 in {
+  imports = [
+    ./desktop/${desktop}.nix
+  ];
+
   # Be careful updating this.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -45,6 +46,9 @@ in {
 
   # Virtualization settings
   virtualisation.docker.enable = true;
+  virtualisation.lxd = {
+    enable = true;
+  };
 
   # Select internationalisation properties.
   i18n = {
@@ -59,46 +63,6 @@ in {
       ];
     };
   };
-
-  # setup windowing environment
-  services.displayManager = if linuxGnome then {
-    defaultSession = "gnome";
-  } else {
-    defaultSession = "none+i3";
-  };
-  services.xserver = if linuxGnome then {
-    enable = true;
-    xkb.layout = "us";
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
-  } else {
-    enable = true;
-    xkb.layout = "us";
-    # dpi = 220;
-
-    desktopManager = {
-      xterm.enable = false;
-      wallpaper.mode = "fill";
-    };
-
-    displayManager = {
-      lightdm.enable = true;
-
-      # AARCH64: For now, on Apple Silicon, we must manually set the
-      # display resolution. This is a known issue with VMware Fusion.
-      sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 200 40
-      '';
-    };
-
-    windowManager = {
-      i3.enable = true;
-    };
-  };
-
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [];
-  # xdg.portal.config.common.default = "*";
 
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
@@ -137,7 +101,7 @@ in {
     # This is needed for the vmware user tools clipboard to work.
     # You can test if you don't need this by deleting this and seeing
     # if the clipboard sill works.
-    #gtkmm3
+    gtkmm3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -157,6 +121,9 @@ in {
   # Enable flatpak. I don't use any flatpak apps but I do sometimes
   # test them so I keep this enabled.
   services.flatpak.enable = true;
+
+  # Snapd on Linux
+  services.snap.enable = true;
 
   # Disable the firewall since we're in a VM and we want to make it
   # easy to visit stuff in here. We only use NAT networking anyways.

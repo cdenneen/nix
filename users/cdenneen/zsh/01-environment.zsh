@@ -1,7 +1,7 @@
 #█▓▒░ clean home
 # export ZDOTDIR="$HOME"/.config/zsh
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export AWS_SHARED_CREDENTIALS_FILE="$HOME"/.aws/credentials
+export AWS_CONFIG_FILE="$HOME"/.aws/config
 export KUBECACHEDIR="$XDG_RUNTIME_DIR"/kube
 export STARSHIP_CACHE="$XDG_CACHE_HOME"/starship
 export TFENV="$XDG_DATA_HOME"/terraform
