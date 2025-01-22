@@ -133,7 +133,7 @@ in {
     ./programs/direnv.nix
     ./programs/eza.nix
     ./programs/fzf.nix
-    ./programs/ghostty.nix
+    # ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/i3status.nix
     ./programs/jujutsu.nix

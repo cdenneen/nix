@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     teams-for-linux
+    ghostty
   ];
 
   users.users.cdenneen = {

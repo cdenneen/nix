@@ -1,12 +1,9 @@
-{ lib, pkgs, ghostty, ... }:
+{ lib, pkgs, ... }:
 with pkgs;
-let
-  isDarwin = stdenv.isDarwin;
-in
 {
   programs.ghostty = {
-    enable = ghostty;
-    package = if isDarwin then null else pkgs.ghostty;
+    enable = true;
+    package = ghostty;
   };
 
   # config = mkIf cfg.enable {
