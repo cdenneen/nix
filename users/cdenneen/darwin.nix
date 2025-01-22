@@ -35,6 +35,7 @@
       "evernote"
       "firefox@developer-edition"
       "fliqlo"
+      "ghostty"
       "google-chrome"
       "hammerspoon"
       "hiddenbar"
