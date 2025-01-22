@@ -1,13 +1,13 @@
 { lib, pkgs, ghostty, ... }:
+with pkgs;
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = stdenv.isDarwin;
 in
 {
   programs.ghostty = {
     enable = ghostty;
-  } // (lib.optionalAttrs (!isDarwin) {
-    package = pkgs.ghostty;
-  });
+    package = if isDarwin then null else pkgs.ghostty;
+  };
 
   # config = mkIf cfg.enable {
   #   xdg.configFile."ghostty/config" = {
