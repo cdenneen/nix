@@ -3,7 +3,7 @@ with lib;
 {
   programs.ghostty = {
     enable = ghostty;
-    package = if pkgs.stdenv.isDarwin then null else pkgs.ghostty;
+    package = if pkgs.stdenv.isDarwin then pkgs.null else pkgs.ghostty;
   };
 
   # config = mkIf cfg.enable {
