@@ -23,7 +23,7 @@
     keychain = {
       enable = true;
       agents = [
-        "ssh"
+        # "ssh"
         "gpg"
       ];
       keys = [
@@ -40,6 +40,13 @@
     gpg = {
       enable = true;
       homedir = "${config.home.homeDirectory}/.gnupg";
+      publicKeys = [
+        { source = ./keys/personal.pub; trust = 5; }
+        { source = ./keys/work.pub; trust = 5; }
+      ];
+      scdaemonSettings = {
+        disable-ccid = true; # disable gnupg's built-in smartcard reader functionality
+      };
       settings = {
         #█▓▒░ interface
         no-greeting = true;

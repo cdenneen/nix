@@ -3,9 +3,9 @@
 (&>/dev/null ~/.local/bin/exorg &)
 
 #█▓▒░ ssh & gpg keychain init
-eval $(keychain --dir "$XDG_RUNTIME_DIR"\
-	--absolute -q --agents ssh,gpg \
-	--eval ~/.ssh/id_ed25519 0x3834814930B83A30 0xBFEB75D960DFAA6B)
+# eval $(keychain --dir "$XDG_RUNTIME_DIR"\
+# 	--absolute -q --agents gpg \
+# 	--eval ~/.ssh/id_ed25519 0x3834814930B83A30 0xBFEB75D960DFAA6B)
 
 #█▓▒░ 1password
 if [ -n "$(op account list)" ]; then

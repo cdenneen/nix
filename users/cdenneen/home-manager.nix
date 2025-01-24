@@ -134,10 +134,11 @@ in {
     ./programs/eza.nix
     ./programs/fzf.nix
     # ./programs/ghostty.nix
+    # ./programs/gpg.nix # moved to gnupg.nix
     ./programs/git.nix
     ./programs/i3status.nix
     ./programs/jujutsu.nix
-    ./programs/keychain.nix
+    # ./programs/keychain.nix # moved to gnupg.nix
     ./programs/kitty.nix
     ./programs/ssh.nix
     ./programs/starship.nix
@@ -164,6 +165,10 @@ in {
   };
 
   sops.secrets = {
+    "fortress_rsa" = {
+      path = "${homeDirectory}/.ssh/id_rsa.fortress";
+      mode = "0400";
+    };
     "cdenneen_ed25519_2024" = {
       path = "${homeDirectory}/.ssh/cdenneen_ed25519_2024.pem";
       mode = "0400";

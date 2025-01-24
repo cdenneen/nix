@@ -1,7 +1,7 @@
 {
   programs.keychain = {
     enable = true;
-    agents = [ "ssh" "gpg" ];
+    agents = [ "gpg" ];
     keys = [
       "0x3834814930B83A30"
       "0xBFEB75D960DFAA6B"

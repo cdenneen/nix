@@ -87,6 +87,9 @@ in
     } else {});
 
     initExtra = ''
+      if [[ -z "$SSH_AUTH_SOCK" ]]; then
+        export SSH_AUTH_SOCK="${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket"
+      fi
       bindkey -e
 
       bindkey '^[w' kill-region
