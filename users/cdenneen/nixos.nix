@@ -33,5 +33,5 @@
     ];
   };
 
-  nixpkgs.overlays = import ../../lib/overlays.nix; inherit inputs;
+  nixpkgs.overlays = import ../../lib/overlays.nix;
 }
