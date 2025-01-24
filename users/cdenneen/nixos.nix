@@ -11,6 +11,7 @@
     _1password-gui
     teams-for-linux
     ghostty
+    oci-cli
     monkeysphere
   ];
 
@@ -31,4 +32,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII1avpzyzr4rhp/LyD9JrcO+DJP+6pBMwbOglSBXHudF cdenneen_ed25519_2024"
     ];
   };
+
+  nixpkgs.overlays = import ../../lib/overlays.nix; inherit inputs;
 }
