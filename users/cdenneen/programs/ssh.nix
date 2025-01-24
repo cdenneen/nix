@@ -29,6 +29,11 @@
         user = "APKA4GUE2SGMGTPZB44D";
         identityFile = "~/.ssh/codecommit_rsa";
       };
+      "puppet" = {
+        user = "root";
+        hostname = "ctcpmaster01.ap.org";
+        identityFile = "~/.ssh/id_rsa.fortress";
+      };
     };
     extraConfig = ''
       # Use SSHFP
