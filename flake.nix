@@ -78,5 +78,24 @@
       user = "cdenneen";
       darwin = true;
     };
+
+    homeConfigurations.cdenneen =
+      let
+        stable-pkgs = nixpkgs.legacyPackages.${self.system};
+        unstable-pkgs = inputs.nixpkgs-unstable.legacyPackages.${self.system};
+        pkgs = stable-pkgs // {
+          unstable = unstable-pkgs;
+        };
+        user = "cdenneen";
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./users/${user}/home-manager.nix
+
+        ];
+        extraSpecialArgs = {
+          inherit pkgs;
+        };
+      };
   };
 }
