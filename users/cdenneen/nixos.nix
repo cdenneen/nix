@@ -11,6 +11,7 @@
     _1password-gui
     teams-for-linux
     ghostty
+    monkeysphere
   ];
 
   users.users.cdenneen = {
